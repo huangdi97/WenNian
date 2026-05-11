@@ -1,0 +1,21 @@
+# Agent orchestration configuration
+# Timeouts, circuit breaker settings, and debate parameters
+
+agent_timeout: 30.0  # Default agent timeout in seconds
+circuit_threshold: 3  # Consecutive failures before circuit opens
+recovery_timeout: 60.0  # Seconds before half-open recovery attempt
+
+debate:
+  max_rounds: 3  # Maximum debate rounds before forced termination
+  early_termination_threshold: 0.8  # If one side scores > 80%, terminate early
+
+orchestrator:
+  deadlock_check_interval: 10  # Seconds between deadlock scans
+  execution_log_retention: 1000  # Max log entries retained
+
+degradation:
+  # Fallback mappings (agent_id → fallback_agent_id)
+  pro_debater: skeptic
+  con_debater: skeptic
+  interpreter: analyst
+  executor: analyst

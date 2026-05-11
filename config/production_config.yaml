@@ -1,0 +1,29 @@
+# Production module configuration
+# PAT monitoring, LIVCA, bioreactor control, process trajectory
+
+enable_write: false  # CRITICAL: Hard switch — must be explicitly set to true
+
+pat_monitor:
+  sensor_interval_seconds: 60
+
+livca:
+  max_csi_threshold: 60.0
+  doubling_time_baseline: 24.0
+
+bioreactor:
+  temperature_range: [35.0, 39.0]
+  ph_range: [6.7, 7.7]
+  do_minimum: 30.0
+  agitation_max_rpm: 200
+
+process_trajectory:
+  max_passage: 50
+  csi_quality_risk_thresholds:
+    low: 30
+    medium: 50
+    high: 70
+
+gmp_compliance:
+  require_audit_trail: true
+  require_write_protection: true
+  require_operator_authentication: true

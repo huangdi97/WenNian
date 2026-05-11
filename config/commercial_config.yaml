@@ -1,0 +1,50 @@
+# Commercial module configuration
+# White label, product validation, actuarial, CRO, and enterprise wellness settings
+
+white_label:
+  default_brand:
+    name: "问年 WenNian"
+    theme_color: "#2E86AB"
+  templates:
+    default:
+      theme_color: "#2E86AB"
+    medical:
+      theme_color: "#1B6B4A"
+    corporate:
+      theme_color: "#003366"
+    minimal:
+      theme_color: "#333333"
+
+product_validation:
+  minimum_sample_size: 3
+  default_alpha: 0.05  # Significance level
+  effect_size_thresholds:
+    negligible: 0.2
+    small: 0.5
+    medium: 0.8
+    large: 1.0
+
+actuarial:
+  risk_multiple_per_acceleration_year: 0.03  # 3% per year
+  premium_bands:
+    - risk_max: 0.8
+      adjustment: -0.15
+    - risk_max: 0.95
+      adjustment: -0.05
+    - risk_max: 1.05
+      adjustment: 0.0
+    - risk_max: 1.2
+      adjustment: 0.10
+    - risk_max: 999
+      adjustment: 0.25
+
+cro_terminal:
+  standard: "CDISC SDTM IG 3.3 / ADaM IG 1.2"
+  default_study_id: "WENNIAN-001"
+
+enterprise_wellness:
+  k_anonymity_threshold: 20
+  health_capital_index_scale: 20  # Denominator for normalization
+
+instant_feedback:
+  trend_window_days: 7

@@ -1,0 +1,67 @@
+# ---------- 暂时不上传的功能模块 ----------
+# 商业模块 (只保留白标报告)
+src/commercial/actuarial_pricing.py
+src/commercial/cro_terminal.py
+src/commercial/enterprise_wellness.py
+src/commercial/product_validator.py
+
+# 工业模块 (全部)
+src/industrial/
+
+# 生产质控模块 (全部)
+src/production/
+
+# 物理验证模块 (全部)
+src/lab/
+
+# 多维度评估 (只保留器官时钟)
+src/dimensions/immune_clock.py
+src/dimensions/epigenetic_clock.py
+src/dimensions/metabolic_clock.py
+src/dimensions/senescence_burden.py
+src/dimensions/microbiome_clock.py
+src/dimensions/neural_clock.py
+src/dimensions/musculoskeletal_clock.py
+src/dimensions/face_age.py
+src/dimensions/reproductive_aging.py
+src/dimensions/sensory_clock.py
+src/dimensions/societal_clock.py
+
+# 智能体 (只保留基础、分析师、稽核师、访谈师)
+src/agents/skeptic.py
+src/agents/pro_debater.py
+src/agents/con_debater.py
+src/agents/judge.py
+src/agents/interpreter.py
+src/agents/executor.py
+src/agents/explorer.py
+src/agents/task_orchestrator.py
+
+# 知识库 (只保留症状映射)
+src/knowledge/rag.py
+src/knowledge/coagulation_pathway.py
+
+# 输入适配器 (只保留基础数据模型)
+src/inputs/ehr_adapter.py
+src/inputs/wearable_connector.py
+src/inputs/multi_omics_parser.py
+
+# 因果干预模拟器 (如果全谱不需要可忽略)
+# src/causality/intervention_sim.py
+
+# 主动感知与前驱检测
+src/engines/
+
+# 历史轨迹、策略进化等终极功能
+src/visualization/
+
+# ---------- 通用忽略项 ----------
+__pycache__/
+*.pyc
+models/
+data/
+dist/
+build/
+*.egg-info/
+.env
+config/production.yaml

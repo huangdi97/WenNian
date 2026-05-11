@@ -1,0 +1,88 @@
+# WenNian v2.0.0 Default Configuration
+# This file is the single source of truth for all configurable parameters.
+# Environment variables prefixed with WENNIAN_ override these values.
+# Use double-underscore for nesting: WENNIAN_CLOCKS__PHENOAGE_WEIGHT=0.5
+
+# ===============================
+# Clock Configuration
+# ===============================
+clocks:
+  # Weights used by AgingIntegrator for weighted fusion
+  weights:
+    phenoage: 1.0
+    kdm: 0.8
+    dnn: 0.7
+    lifeclock: 0.9
+
+  # Model file paths (relative to project root or absolute)
+  models:
+    dnn_weights: "data/models/dnn_clock.pt"
+
+  # Clock-specific parameters
+  phenoage_coefficients: {}  # Empty = use hardcoded defaults
+  kdm_reference_correlation: 0.1
+
+# ===============================
+# Validation Configuration
+# ===============================
+validation:
+  # Hard limits key-value overrides or additions
+  hard_limits: {}
+  # Soft threshold overrides
+  soft_thresholds: {}
+  # Additional contradiction rules
+
+# ===============================
+# Report Configuration
+# ===============================
+report:
+  brand:
+    name: "问年 WenNian"
+    logo: ""  # Path or base64
+    theme_color: "#2E86AB"
+
+  disclaimer: |
+    本报告不构成医疗诊断，所有结果仅供健康参考。
+    任何健康决策应在执业医师指导下进行。
+    本系统基于公开学术文献构建，预测结果存在不确定性。
+
+# ===============================
+# Security Configuration
+# ===============================
+security:
+  # Session timeout in seconds
+  session_timeout: 3600
+
+  # Red-line prohibited patterns (regex)
+  redline_patterns:
+    - "(?i)(建议服用|推荐用药|处方|开具|配药|治疗建议|诊断结果|确诊)"
+    - "(?i)(guarantee.*cure|cure.*guarantee|治愈|根治|包治)"
+    - "(?i)(一定有效|100%有效|百分百有效|绝对有效)"
+    - "(?i)(无需医生|不需要医生|替代医生|取代诊断)"
+
+  # Allowed origins for CORS
+  cors_origins:
+    - "*"
+
+# ===============================
+# Logging Configuration
+# ===============================
+logging:
+  level: "INFO"
+  dir: "logs"
+
+# ===============================
+# UI Configuration
+# ===============================
+ui:
+  title: "问年 WenNian — 衰老干预决策系统"
+  server_host: "0.0.0.0"
+  server_port: 7860
+  default_age: 40
+
+# ===============================
+# API Configuration
+# ===============================
+api:
+  host: "0.0.0.0"
+  port: 8000

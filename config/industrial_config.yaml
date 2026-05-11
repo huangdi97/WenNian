@@ -1,0 +1,21 @@
+# Industrial module configuration
+# Anti-aging target prioritization, compound screening, cell assays
+
+target_prioritization:
+  default_outcome: "inflammation"
+  include_safety: true
+
+compound_screening:
+  min_sas_threshold: 0.3
+
+cell_assay:
+  positive_control: "rapamycin_100nM_72h"
+  tolerance: 0.3
+
+animal_trajectory:
+  species: "mouse"
+  max_lifespan_weeks: 130
+
+cell_line_qc:
+  max_passages: 40
+  senescence_csi_threshold: 60

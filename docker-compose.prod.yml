@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: wennian-api
+    ports:
+      - "8000:8000"
+    environment:
+      - WENNIAN_LOGGING__LEVEL=INFO
+      - WENNIAN_API__HOST=0.0.0.0
+      - WENNIAN_API__PORT=8000
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./config:/app/config
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    container_name: wennian-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  gradio:
+    build: .
+    container_name: wennian-gradio
+    command: ["python", "-m", "src.ui.app"]
+    ports:
+      - "7860:7860"
+    environment:
+      - WENNIAN_UI__SERVER_HOST=0.0.0.0
+      - WENNIAN_UI__SERVER_PORT=7860
+    depends_on:
+      - api
+    restart: unless-stopped
